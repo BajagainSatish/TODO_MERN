@@ -1,0 +1,79 @@
+/* AuthStyles.css */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.form {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.fa-circle-user {
+    font-size: 80px;
+    color: #151515;
+}
+
+.form input {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border 0.2s ease;
+}
+
+.form input:focus {
+    border-color: #151515;
+    outline: none;
+}
+
+.login-btn {
+    background-color: #151515;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #333;
+}
+
+.text-center {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.text-center a {
+    color: #151515;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
