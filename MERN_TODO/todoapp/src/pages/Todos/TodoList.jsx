@@ -1,15 +1,18 @@
 import React from "react";
+import "../Home/HomePage.css";
 
 const TodoList = ({ allTask }) => (
-  <div className="row">
-    {allTask.map(task => (
-      <div key={task._id} className="col-md-4 mb-3">
-        <div className="card">
-          <div className="card-body">
-            <h5 className="card-title">{task.title}</h5>
-            <p className="card-text">{task.description}</p>
-          </div>
-        </div>
+  <div className="task-grid">
+    {allTask.map((task) => (
+      <div key={task._id} className="task-card">
+        <h3 className="task-title">{task.title}</h3>
+        <p className="task-desc">{task.description}</p>
+        <p className="task-status">
+          Status:{" "}
+          <span className={task.isCompleted ? "completed" : "pending"}>
+            {task.isCompleted ? "Completed" : "Pending"}
+          </span>
+        </p>
       </div>
     ))}
   </div>

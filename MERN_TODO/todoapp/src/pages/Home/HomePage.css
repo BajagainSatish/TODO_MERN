@@ -1,0 +1,79 @@
+.homepage-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.homepage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.homepage-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.create-btn {
+    background-color: #151515;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.2s ease-in-out;
+}
+
+.create-btn:hover {
+    background-color: #2d2d2d;
+}
+
+.no-task {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.task-card {
+    background: #f4f4f4;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+    color: #333;
+}
+
+.task-desc {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: #555;
+}
+
+.task-status {
+    font-size: 0.9rem;
+}
+
+.completed {
+    color: green;
+    font-weight: bold;
+}
+
+.pending {
+    color: orange;
+    font-weight: bold;
+}
