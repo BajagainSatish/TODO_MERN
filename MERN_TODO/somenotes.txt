@@ -1,0 +1,13 @@
+Open your app in Chrome/Browser
+Open Dev Tools → Application tab → Local Storage → http://localhost:5173
+Click on the key todoapp
+Copy the token value (the long string)
+
+Go to the "Headers" tab in Postman and set:
+Key		Value
+Authorization	Bearer <paste your token>
+Content-Type	application/json
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+{"success":true,"message":"login successfully","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjFmMWViNjRhNzQ2OTNiYjdmMTVkMSIsImlhdCI6MTc0NzEyMjM2MCwiZXhwIjoxNzQ3MjA4NzYwfQ.v8291bYDYp4NBj3qJUL45_8GLi-tq1hBE0b23CHv7NI","user":{"id":"6821f1eb64a74693bb7f15d1","email":"sthbjgn@gmail.com","username":"satishdon"}}
