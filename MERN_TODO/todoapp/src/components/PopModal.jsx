@@ -1,6 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 import TodoServices from "../Services/TodoServices";
+import "./PopModal.css";
 
 const PopModal = ({ title, setTitle, description, setDescription, showModal, setShowModal, refreshTodos }) => {
   const handleClose = () => setShowModal(false);
@@ -22,33 +23,33 @@ const PopModal = ({ title, setTitle, description, setDescription, showModal, set
   };
 
   if (!showModal) return null;
+  
   return (
-    <div className="modal show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}>
-      <div className="modal-dialog">
+    <div className="modal-overlay">
+      <div className="modal">
+        <h2>Add New Task</h2>
         <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Add New Task</h5>
-            <button className="btn-close" onClick={handleClose} />
-          </div>
-          <div className="modal-body">
-            <input
-              type="text"
-              className="form-control mb-3"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              className="form-control"
-              placeholder="Description"
-              rows={4}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <div className="modal-footer">
-            <button className="btn btn-secondary" onClick={handleClose}>Close</button>
-            <button className="btn btn-primary" onClick={handleSubmit}>Create</button>
+          <input
+            type="text"
+            className="modal-input"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            className="modal-textarea"
+            placeholder="Description"
+            rows={4}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <div className="modal-actions">
+            <button className="cancel-btn" onClick={handleClose}>
+              Close
+            </button>
+            <button className="create-btn" onClick={handleSubmit}>
+              Create
+            </button>
           </div>
         </div>
       </div>

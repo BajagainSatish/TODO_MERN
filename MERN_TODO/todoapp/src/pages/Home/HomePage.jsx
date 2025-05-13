@@ -4,7 +4,9 @@ import Navbar from "../../components/Layout/Navbar";
 import PopModal from "../../components/PopModal";
 import TodoServices from "../../Services/TodoServices";
 import TodoList from "../Todos/TodoList";
+import toast from "react-hot-toast";
 import "./HomePage.css";
+import "../../components/PopModal.css";
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,12 +17,20 @@ const HomePage = () => {
 
   const fetchTasks = async () => {
     try {
-      const user = JSON.parse(localStorage.getItem("todoapp"));
-      if (!user) return navigate("/login");
+      const userData = localStorage.getItem("todoapp");
+      if (!userData) return navigate("/login");
+      
+      const user = JSON.parse(userData);
+      if (!user?.user?.id) {
+        navigate("/login");
+        return;
+      }
+      
       const { data } = await TodoServices.getAllTodo(user.user.id);
-      setTasks(data.todos);
-    } catch (err) {
-      console.error("Failed to fetch todos", err);
+      setTasks(data.todos || []);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+      toast.error("Failed to fetch tasks");
     }
   };
 
@@ -28,19 +38,27 @@ const HomePage = () => {
     fetchTasks();
   }, []);
 
+  const handleAddTask = () => setShowModal(true);
+
   return (
     <>
       <Navbar />
-      <div className="homepage-container">
-        <div className="homepage-header">
-          <h2 className="homepage-title">Welcome Back!</h2>
-          <button className="create-btn" onClick={() => setShowModal(true)}>+ Add Task</button>
-        </div>
-        {tasks.length ? (
-          <TodoList allTask={tasks} refreshTodos={fetchTasks} />
-        ) : (
-          <p className="no-task">No tasks yet. Create one to get started!</p>
-        )}
+      <main className="homepage">
+        <section className="homepage-header">
+          <h2>Welcome Back!</h2>
+          <button className="add-task-btn" onClick={handleAddTask}>
+            + Add Task
+          </button>
+        </section>
+
+        <section>
+          {tasks.length > 0 ? (
+            <TodoList allTask={tasks} refreshTodos={fetchTasks} />
+          ) : (
+            <p className="no-task">No tasks yet. Create one to get started!</p>
+          )}
+        </section>
+
         <PopModal
           showModal={showModal}
           setShowModal={setShowModal}
@@ -50,7 +68,7 @@ const HomePage = () => {
           setDescription={setDescription}
           refreshTodos={fetchTasks}
         />
-      </div>
+      </main>
     </>
   );
 };
