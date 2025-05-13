@@ -86,3 +86,27 @@
     color: orange;
     font-weight: bold;
 }
+
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-btn,
+.delete-btn {
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.status-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}

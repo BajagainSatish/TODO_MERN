@@ -65,3 +65,9 @@
     background: #333;
     color: #fff;
 }
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

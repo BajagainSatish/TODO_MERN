@@ -16,6 +16,8 @@ API.interceptors.request.use((config) => {
 const TodoServices = {
   createTodo: (data) => API.post("/create", data),
   getAllTodo: (userId) => API.post(`/getAll/${userId}`),
+  deleteTodo: (id) => API.delete(`/delete/${id}`),
+  updateTodo: (id, data) => API.patch(`/update/${id}`, data)
 };
 
 export default TodoServices;
