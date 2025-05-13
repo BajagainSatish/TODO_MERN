@@ -1,21 +1,21 @@
 import axios from "axios";
 
-// Get user from localStorage safely
-const user = JSON.parse(localStorage.getItem("todoapp"));
+const API = axios.create({
+  baseURL: "http://localhost:8080/todo", // backend port
+});
 
-if (user?.token) {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
-}
+// Add auth token to headers if present
+API.interceptors.request.use((config) => {
+  const userData = JSON.parse(localStorage.getItem("todoapp"));
+  if (userData?.token) {
+    config.headers.Authorization = `Bearer ${userData.token}`;
+  }
+  return config;
+});
 
-// Create TODO
-const createTodo = (data) => {
-  return axios.post("/todo/create", data);
+const TodoServices = {
+  createTodo: (data) => API.post("/create", data),
+  getAllTodo: (userId) => API.post(`/getAll/${userId}`),
 };
 
-// Get all TODOs
-const getAllTodo = (id) => {
-  return axios.post(`/todo/getAll/${id}`);
-};
-
-const TodoServices = { createTodo, getAllTodo };
 export default TodoServices;

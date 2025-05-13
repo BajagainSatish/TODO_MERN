@@ -6,6 +6,7 @@ const dotenv = require('dotenv')
 const colors = require("colors")
 const cors = require("cors")
 const connectDB = require('./config/db')
+const todoRoutes = require("./routes/todoRoutes");
 
 // env configuration
 dotenv.config()
@@ -21,6 +22,7 @@ const app = express()
 app.use(express.json())//most commonly json format used to send/receive
 app.use(cors())
 app.use(morgan("dev"))// to find which url is being used, if you access link: eg. http://localhost:8080/test and press enter, shows url endpoint which was hit, status code, what time it took
+app.use("/todo", todoRoutes);
 
 // routes
 // url pattern eg.test followed by callback function(define or arrow function) takes req and sends response

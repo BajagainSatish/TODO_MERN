@@ -25,8 +25,8 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-brand">
         <i className="fa-solid fa-user-tie" /> &nbsp;
-        <i>Welcome</i> {username}!
-      </div>
+        <span>Welcome {username}!</span>
+        </div>
       <ul className="navbar-links">
         <li>
           <Link className="nav-link" to="/home">
